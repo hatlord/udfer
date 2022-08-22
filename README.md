@@ -18,3 +18,7 @@ select * from mysql.func where name = 'do_system'
 
 If it does exist and you run the command provided, you will clobber an existing function.
 
+Run commands like this:
+~~~
+select do_system('touch /tmp/file.txt');
+~~~

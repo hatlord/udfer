@@ -10,4 +10,11 @@ gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
 ./udfer /path/to/raptor_udf2.so
 ~~~
 
+Before running the code this produces, ensure that the do_system UDF does not exist!
+
+~~~
+select * from mysql.func where name = 'sys_exec'
+~~~
+
+If it does exist and you run the command provided, you will clobber an existing function.
 

